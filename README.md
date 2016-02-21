@@ -4,10 +4,6 @@ A UNIX continuous integration server.
 
 ### Overview
 
-kallice-master
-kallice-producer
-kallice-runner
-
 The simplest job is based on a periodic schedule (you can even use the crontab
 format if you'd like). More flexible jobs can use a job producer. A job producer
 is a process that tells the master that a job should be run. The scheduled job
