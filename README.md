@@ -15,22 +15,22 @@ master spawns a job runner of the type described in the config file.  The runner
 executes the job and monitors execution. When the job is finished, the runner
 reports the results back to the master. 
 
-There are different types of runners.
+Runners:
 
-simple: The simplest runner does a fork/exec and checks the return code. If it
+* simple: The simplest runner does a fork/exec and checks the return code. If it
 is non-zero, the job has failed.
-pipe: read from a pipe
-file: monitor a file
-tap: read tap output
-http: look for a specific response to a request
-net: monitor fom a TCP or UDP socket
-unix-socket: monitor a UNIX socket
+* pipe: read from a pipe
+* file: monitor a file
+* tap: read tap output
+* http: look for a specific response to a request
+* net: monitor fom a TCP or UDP socket
+* unix-socket: monitor a UNIX socket
 
 Producers:
 
-periodic (cron, tick, etc.)
-http poller
-file watcher
+* periodic (cron, tick, etc.)
+* http poller
+* file watcher
 
 ### Install
 
