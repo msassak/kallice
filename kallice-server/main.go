@@ -2,8 +2,9 @@ package main
 
 import (
 	"flag"
-	"github.com/BurntSushi/toml"
 	"log"
+
+	"github.com/BurntSushi/toml"
 )
 
 type MasterConfig struct {
@@ -34,6 +35,8 @@ type JobConfig struct {
 	Args     []string
 }
 
+var conf MasterConfig
+
 func main() {
 	flag.Parse()
 	var configPath = flag.Arg(0)
@@ -50,5 +53,5 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Printf("kallice-master read config data! %v", conf)
+	log.Printf("kallice-server read config data! %v", conf)
 }
