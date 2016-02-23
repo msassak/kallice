@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"log"
+	"net"
+	"net/rpc"
 
 	"github.com/BurntSushi/toml"
 )
@@ -37,6 +39,29 @@ type JobConfig struct {
 
 var conf MasterConfig
 
+type JobResult struct {
+	Result   string
+	ExitCode int
+}
+
+type JobReporter int
+
+func (t *JobReporter) ReportResult(res *JobResult, reply *string) error {
+	log.Printf("Runner result %s with exit code %d", res.Result, res.ExitCode)
+	*reply = "ack"
+	return nil
+}
+
+func serve() {
+	reporter := new(JobReporter)
+	rpc.Register(reporter)
+	l, e := net.Listen("unix", "/tmp/kallice.sock")
+	if e != nil {
+		log.Fatal("UNIX socket failure: ", e)
+	}
+	rpc.Accept(l)
+}
+
 func main() {
 	flag.Parse()
 	var configPath = flag.Arg(0)
@@ -54,4 +79,8 @@ func main() {
 	}
 
 	log.Printf("kallice-server read config data! %v", conf)
+
+	// makes no attempt to clean up the socket, so you have to delete by hand
+	// when restarting
+	serve()
 }
