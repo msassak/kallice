@@ -7,6 +7,7 @@ import (
 	"os/exec"
 )
 
+// Need to share this between the server and here
 type JobResult struct {
 	Result   string
 	ExitCode int
