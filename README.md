@@ -45,6 +45,11 @@ we can use to install: make install, etc.
 
 ### Use
 
-### Why?
+### Test
 
-### How?
+```
+kallice-runner job-name job-id job-desc-url
+```
+
+* unix:///tmp/kallice.sock
+* file:///home/alice/test-job.toml
