@@ -26,6 +26,12 @@ http: look for a specific response to a request
 net: monitor fom a TCP or UDP socket
 unix-socket: monitor a UNIX socket
 
+Producers:
+
+periodic (cron, tick, etc.)
+http poller
+file watcher
+
 ### Install
 
 Copy the binaries to a suitable location in your PATH.
